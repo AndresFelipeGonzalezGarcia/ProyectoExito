@@ -11,12 +11,8 @@
 		<managed-bean-scope>request</managed-bean-scope>
 
 	</managed-bean>
-	<managed-bean>
 
-		<managed-bean-name>TableBean</managed-bean-name>
-		<managed-bean-class>co.edu.unbosque.beans.TableBean</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
 
-	</managed-bean>
+
 
 </faces-config>
