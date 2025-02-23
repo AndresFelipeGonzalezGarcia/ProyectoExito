@@ -36,24 +36,7 @@
 						styleClass="ui-button-success" style="margin-right: .5rem">
 						<p:resetInput target=":dialogs:manage-product-content" />
 					</p:commandButton>
-					<p:commandButton id="delete-products-button"
-						value="#{UserBean.deleteButtonMessage}" icon="pi pi-trash"
-						actionListener="#{UserBean.deleteSelectedProducts}"
-						styleClass="ui-button-danger"
-						disabled="#{!userBean.hasSelectedProducts()}" update="@this">
-						<p:confirm header="Confirmation"
-							message="Delete the selected products?"
-							icon="pi pi-exclamation-triangle" />
-					</p:commandButton>
-				</p:toolbarGroup>
-				<p:toolbarGroup align="right">
-					<p:fileUpload mode="simple" skinSimple="true" label="Import"
-						chooseIcon="pi pi-download" />
-					<p:commandButton value="Export" icon="pi pi-upload"
-						styleClass="ui-button-help" ajax="false">
-						<p:dataExporter type="pdf" target="dt-products"
-							fileName="products" />
-					</p:commandButton>
+
 				</p:toolbarGroup>
 			</p:toolbar>
 
@@ -64,7 +47,7 @@
 				selectionRowMode="add" paginatorPosition="bottom">
 				<f:facet name="header">
 					<div class="products-table-header">
-						<span style="font-weight: bold">PRODUCTS</span> <span
+						<span style="font-weight: bold">JUGUETES</span> <span
 							class="filter-container ui-input-icon-left"> <i
 							class="pi pi-search"></i> <p:inputText id="globalFilter"
 								onkeyup="PF('dtProducts').filter()" placeholder="Search" />
@@ -72,41 +55,31 @@
 					</div>
 				</f:facet>
 
-				<p:ajax event="rowSelect" update=":form:delete-products-button" />
-				<p:ajax event="rowUnselect" update=":form:delete-products-button" />
-				<p:ajax event="rowSelectCheckbox"
-					update=":form:delete-products-button" />
-				<p:ajax event="rowUnselectCheckbox"
-					update=":form:delete-products-button" />
-				<p:ajax event="toggleSelect" update=":form:delete-products-button" />
 
 				<p:column selectionMode="multiple" exportable="false"></p:column>
 
-				<p:column headerText="Code" sortBy="#{product.code}"
+				<p:column headerText="Código" sortBy="#{product.code}"
 					filterBy="#{product.code}">
 					<h:outputText value="#{product.code}" />
 				</p:column>
-				<p:column headerText="Name" sortBy="#{product.name}"
+				<p:column headerText="Nombre" sortBy="#{product.name}"
 					filterBy="#{product.name}">
 					<h:outputText value="#{product.name}" />
 				</p:column>
-				<p:column headerText="Image" exportable="false">
+				<p:column headerText="Imagen" exportable="false">
 					<p:graphicImage name="images/product/#{product.image}"
 						library="demo" styleClass="product-image" />
 				</p:column>
-				<p:column headerText="Price" sortBy="#{product.price}">
+				<p:column headerText="Precio" sortBy="#{product.price}">
 					<h:outputText value="#{product.price}" style="font-weight: 700">
 						<f:convertNumber currencySymbol="$" type="currency" />
 					</h:outputText>
 				</p:column>
-				<p:column headerText="Category" sortBy="#{product.category}"
+				<p:column headerText="Categoría" sortBy="#{product.category}"
 					filterBy="#{product.category}">
 					<h:outputText value="#{product.category}" />
 				</p:column>
-				<p:column headerText="Reviews" sortBy="#{product.rating}">
-					<p:rating value="#{product.rating}" readonly="true" />
-				</p:column>
-				<p:column headerText="Status" sortBy="#{product.inventoryStatus}"
+				<p:column headerText="Estado" sortBy="#{product.inventoryStatus}"
 					filterBy="#{product.inventoryStatus}">
 					<h:outputText
 						styleClass="product-badge status-#{product.inventoryStatus.name().toLowerCase()}"
@@ -134,7 +107,7 @@
 		</h:form>
 
 		<h:form id="dialogs">
-			<p:dialog header="Product Details" showEffect="fade" modal="true"
+			<p:dialog header="Detalles del producto" showEffect="fade" modal="true"
 				widgetVar="manageProductDialog" responsive="true">
 				<p:outputPanel id="manage-product-content" class="ui-fluid">
 					<p:outputPanel rendered="#{not empty UserBean.selectedProduct}">
@@ -143,35 +116,35 @@
 							library="demo" styleClass="product-image"
 							rendered="#{not empty UserBean.selectedProduct.image}" />
 						<div class="field">
-							<p:outputLabel for="name">Name</p:outputLabel>
+							<p:outputLabel for="name">Nombre</p:outputLabel>
 							<p:inputText id="name" value="#{UserBean.selectedProduct.name}"
 								required="true" />
 						</div>
 						<div class="field">
-							<p:outputLabel for="description">Description</p:outputLabel>
+							<p:outputLabel for="description">Descripción</p:outputLabel>
 							<p:inputTextarea id="description"
 								value="#{UserBean.selectedProduct.description}" />
 						</div>
 						<div class="field">
-							<p:outputLabel for="category">Category</p:outputLabel>
+							<p:outputLabel for="category">Categoría</p:outputLabel>
 							<p:selectOneRadio id="category"
 								value="#{UserBean.selectedProduct.category}" layout="responsive"
 								columns="2">
-								<f:selectItem itemLabel="Accessories" itemValue="Accessories" />
-								<f:selectItem itemLabel="Clothing" itemValue="Clothing" />
-								<f:selectItem itemLabel="Electronics" itemValue="Electronics" />
-								<f:selectItem itemLabel="Fitness" itemValue="Fitness" />
+								<f:selectItem itemLabel="Juegos de mesa" itemValue="Juegos de mesa" />
+								<f:selectItem itemLabel="Niños" itemValue="Niños" />
+								<f:selectItem itemLabel="Niñas" itemValue="Niñas" />
+								<f:selectItem itemLabel="Bebés" itemValue="Bebés" />
 							</p:selectOneRadio>
 						</div>
 						<div class="formgrid grid">
 							<div class="field col">
-								<p:outputLabel for="price">Price</p:outputLabel>
+								<p:outputLabel for="price">Precio</p:outputLabel>
 								<p:inputNumber id="price"
-									value="#{UserBean.selectedProduct.price}" symbol=" USD"
+									value="#{UserBean.selectedProduct.price}" symbol="COP"
 									symbolPosition="s" decimalSeparator="." thousandSeparator="," />
 							</div>
 							<div class="field col">
-								<p:outputLabel for="quantity">Quantity</p:outputLabel>
+								<p:outputLabel for="quantity">Cantidad</p:outputLabel>
 								<p:spinner id="quantity" min="0"
 									value="#{UserBean.selectedProduct.quantity}" />
 							</div>
@@ -195,7 +168,6 @@
 				severity="warn">
 				<p:commandButton value="Yes" icon="pi pi-check"
 					actionListener="#{UserBean.deleteProduct}" process="@this"
-					update=":form:delete-products-button"
 					oncomplete="PF('deleteProductDialog').hide()" />
 				<p:commandButton value="No" type="button"
 					styleClass="ui-button-secondary" icon="pi pi-times"
