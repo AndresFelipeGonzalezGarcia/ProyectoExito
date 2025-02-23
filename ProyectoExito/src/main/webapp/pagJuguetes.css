@@ -1,0 +1,23 @@
+body {
+	background: white;
+	margin: 0px;
+	font-family: "Poppins", Helvetica, sans-serif;
+}
+
+#header {
+	background-color: yellow;
+	color: black;
+	padding: 10px;
+	text-align: center;
+} 
+#footer {
+	position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+	background-color: yellow;
+	color: black;
+	padding: 10px;
+	text-align: center;
+}
+ 

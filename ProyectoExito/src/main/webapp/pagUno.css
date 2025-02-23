@@ -1,0 +1,110 @@
+body {
+	background: white;
+	margin: 0px;
+	font-family: "Poppins", Helvetica, sans-serif;
+}
+
+#header {
+	background-color: yellow;
+	color: black;
+	padding: 10px;
+	text-align: center;
+}
+#footer {
+	position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+	background-color: yellow;
+	color: black;
+	padding: 10px;
+	text-align: center;
+}
+
+.tit {
+	padding: 10px;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+}
+.h{
+	text-align: center;
+	padding: none;
+}
+#img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: 60px auto;
+} 
+#img1 {
+    width: 100%;
+    max-width: 200px;
+    height: 200px;
+    display: block;
+    margin: 50px auto;
+}
+#img:hover{
+	transform: scale(1.1);
+}
+#img1:hover{
+	transform: scale(1.1);
+}
+/* ----------------------------------------------------------------------ALIMENTOS-------------------------------------------------------------------------------- */
+#alimentos {
+	background-color: #f0f2ce;
+	width: 250px;
+	height: 400px;
+	transition: all 0.8s;
+	cursor: pointer;
+	margin-left: 700px;
+	margin-bottom: auto; margin-top : 100px;
+	position: absolute;
+	border-radius: 15px;
+	margin-top: 100px;
+}
+
+#alimentos:hover {
+	box-shadow: 0 2px 8px black;
+	transform: Scale(1.1);
+}
+/* ----------------------------------------------------------------------ROPA-------------------------------------------------------------------------------- */
+#ropa {
+	background-color: #f0f2ce;
+	width: 250px;
+	height: 400px;
+	transition: all 0.8s;
+	cursor: pointer;
+	margin-top: 100px;
+	position: absolute;
+	border-radius: 15px;
+}
+
+#ropa:hover {
+	box-shadow: 0 2px 8px black;
+	transform: Scale(1.1);
+}
+
+/* ----------------------------------------------------------------------JUGUETES-------------------------------------------------------------------------------- */
+#juguetes { 
+	background: #f0f2ce;
+	width: 250px;
+	height: 400px;
+	transition: all 0.8s;
+	cursor: pointer;
+	margin-right: 700px;
+	margin-top: 100px;
+	position: absolute;
+	border-radius: 15px;
+} 
+
+#juguetes:hover {
+	box-shadow: 0 2px 8px black;
+	transform: Scale(1.1);
+}
+
+
+
