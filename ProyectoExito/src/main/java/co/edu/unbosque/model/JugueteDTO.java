@@ -18,14 +18,13 @@ public class JugueteDTO implements Serializable {
     private double price;
     private String category;
     private int quantity;
-    private InventoryStatus inventoryStatus;
     private List<Order> orders;
 
     public JugueteDTO() {
     }
 
-    public JugueteDTO(int id, String code, String name, String description, String image, double price, String category, int quantity,
-            InventoryStatus inventoryStatus) {
+    public JugueteDTO(int id, String code, String name, String description, String image, double price, String category, int quantity
+         ) {
         this.id = id;
         this.code = code;
         this.name = name;
@@ -34,13 +33,12 @@ public class JugueteDTO implements Serializable {
         this.price = price;
         this.category = category;
         this.quantity = quantity;
-        this.inventoryStatus = inventoryStatus;
     }
 
     @Override
     public JugueteDTO clone() {
-        return new JugueteDTO(getId(), getCode(), getName(), getDescription(), getImage(), getPrice(), getCategory(), getQuantity(),
-                getInventoryStatus());
+        return new JugueteDTO(getId(), getCode(), getName(), getDescription(), getImage(), getPrice(), getCategory(), getQuantity()
+               );
     }
 
     public int getId() {
@@ -105,14 +103,6 @@ public class JugueteDTO implements Serializable {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public InventoryStatus getInventoryStatus() {
-        return inventoryStatus;
-    }
-
-    public void setInventoryStatus(InventoryStatus inventoryStatus) {
-        this.inventoryStatus = inventoryStatus;
     }
 
 

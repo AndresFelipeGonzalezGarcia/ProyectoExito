@@ -56,10 +56,6 @@
 			filterBy="#{alimento.name}">
 			<h:outputText value="#{alimento.name}" />
 		</p:column>
-		<p:column headerText="Imagen" exportable="false">
-			<p:graphicImage name="images/alimento/#{alimento.image}"
-				library="demo" styleClass="alimento-image" />
-		</p:column>
 		<p:column headerText="Precio" sortBy="#{alimento.price}">
 			<h:outputText value="#{alimento.price}" style="font-weight: 700">
 				<f:convertNumber currencySymbol="$" type="currency" />
@@ -69,11 +65,11 @@
 			filterBy="#{alimento.category}">
 			<h:outputText value="#{alimento.category}" />
 		</p:column>
-		<p:column headerText="Estado" sortBy="#{alimento.inventoryStatus}"
-			filterBy="#{alimento.inventoryStatus}">
+		<p:column headerText="Cantidad" sortBy="#{alimento.quantity}"
+			filterBy="#{alimento.quantity}">
 			<h:outputText
-				styleClass="alimento-badge status-#{alimento.inventoryStatus.name().toLowerCase()}"
-				value="#{alimento.inventoryStatus.text}" />
+				styleClass="alimento-badge status-#{alimento.quantity}"
+				value="#{alimento.quantity}" />
 		</p:column>
 		<p:column exportable="false" ariaHeaderText="Actions">
 			<p:commandButton icon="pi pi-pencil"
@@ -91,14 +87,14 @@
 				<f:setPropertyActionListener value="#{alimento}"
 					target="#{UserBean.selectedProduct1}" />
 			</p:commandButton>
-		</p:column>
+		</p:column> 
 
 	</p:dataTable>
 </h:form> <h:form id="dialogs">
 	<p:dialog header="Detalles del producto" showEffect="fade" modal="true"
 		widgetVar="manageProductDialog" responsive="true">
 		<p:outputPanel id="manage-alimento-content" class="ui-fluid">
-			<p:outputPanel rendered="#{not empty Us0erBean.selectedProduct1}">
+			<p:outputPanel rendered="#{not empty UserBean.selectedProduct1}">
 				<p:graphicImage
 					name="images/alimento/#{UserBean.selectedProduct1.image}"
 					library="demo" styleClass="product-image"

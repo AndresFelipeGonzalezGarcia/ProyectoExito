@@ -1,10 +1,9 @@
-package co.edu.unbosque.model.persistance;
+package co.edu.unbosque.model.persistence;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
-import co.edu.unbosque.model.InventoryStatus;
 import co.edu.unbosque.model.JugueteDTO;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -20,13 +19,13 @@ public class JugueteDAO {
     public void init() {
         products = new ArrayList<>(); 
         products.add(new JugueteDTO(1000, "f230fh0g3", "Barbie", "Muñeca de Mattel", "Barbie.jpg", 35000,
-                "Niñas", 24, InventoryStatus.INSTOCK));
+                "Niñas", 24));
         products.add(new JugueteDTO(1001, "nvklal433", "MaxSteel", "Muñeco de Mattel", "black-watch.jpg", 72,
-                "Niños", 61, InventoryStatus.INSTOCK));
+                "Niños", 61));
         products.add(new JugueteDTO(1002, "zz21cz3c1", "Perrito Aprende Conmigo", "Peluche de Fisher Price", "blue-band.jpg", 79,
-                "Bebés", 2, InventoryStatus.LOWSTOCK));
+                "Bebés", 2));
         products.add(new JugueteDTO(1003, "244wgerg2", "Uno", "Juego de cartas", "blue-t-shirt.jpg", 29,
-                "Juegos de Mesa", 25, InventoryStatus.INSTOCK));
+                "Juegos de Mesa", 25));
 
         
         

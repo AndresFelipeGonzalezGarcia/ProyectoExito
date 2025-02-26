@@ -10,9 +10,9 @@ import org.primefaces.PrimeFaces;
 import co.edu.unbosque.model.AlimentoDTO;
 import co.edu.unbosque.model.JugueteDTO;
 import co.edu.unbosque.model.RopaDTO;
-import co.edu.unbosque.model.persistance.AlimentoDAO;
-import co.edu.unbosque.model.persistance.JugueteDAO;
-import co.edu.unbosque.model.persistance.RopaDAO;
+import co.edu.unbosque.model.persistence.AlimentoDAO;
+import co.edu.unbosque.model.persistence.JugueteDAO;
+import co.edu.unbosque.model.persistence.RopaDAO;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
@@ -139,7 +139,6 @@ public class UserBean implements Serializable {
 			this.selectedProduct2.setCode(UUID.randomUUID().toString().replaceAll("-", "").substring(0, 9));
 			rDAO.getProducts().add(this.selectedProduct2);
 			products2.add(this.selectedProduct2);
-			rDAO.inLowStock();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Added"));
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Updated"));

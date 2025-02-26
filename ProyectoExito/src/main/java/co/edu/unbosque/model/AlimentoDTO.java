@@ -18,14 +18,12 @@ public class AlimentoDTO implements Serializable {
     private double price;
     private String category;
     private int quantity;
-    private InventoryStatus inventoryStatus;
     private List<Order> orders;
 
     public AlimentoDTO() {
     }
 
-    public AlimentoDTO(int id, String code, String name, String description, String image, double price, String category, int quantity,
-            InventoryStatus inventoryStatus) {
+    public AlimentoDTO(int id, String code, String name, String description, String image, double price, String category, int quantity) {
         this.id = id;
         this.code = code;
         this.name = name;
@@ -34,13 +32,11 @@ public class AlimentoDTO implements Serializable {
         this.price = price;
         this.category = category;
         this.quantity = quantity;
-        this.inventoryStatus = inventoryStatus;
     }
 
     @Override
     public AlimentoDTO clone() {
-        return new AlimentoDTO(getId(), getCode(), getName(), getDescription(), getImage(), getPrice(), getCategory(), getQuantity(),
-                getInventoryStatus());
+        return new AlimentoDTO(getId(), getCode(), getName(), getDescription(), getImage(), getPrice(), getCategory(), getQuantity());
     }
 
     public int getId() {
@@ -107,13 +103,6 @@ public class AlimentoDTO implements Serializable {
         this.quantity = quantity;
     }
 
-    public InventoryStatus getInventoryStatus() {
-        return inventoryStatus;
-    }
-
-    public void setInventoryStatus(InventoryStatus inventoryStatus) {
-        this.inventoryStatus = inventoryStatus;
-    }
 
 
     public List<Order> getOrders() {

@@ -3,6 +3,10 @@ package co.edu.unbosque.model;
 import java.io.Serializable;
 import java.util.List;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Named;
+
+
 public class RopaDTO implements Serializable {
 
 	/**
@@ -16,15 +20,14 @@ public class RopaDTO implements Serializable {
 	private String image;
 	private double price;
 	private String talla;
-	private String quantity;
-	private InventoryStatus inventoryStatus;
+	private int quantity;
 	private List<Order> orders;
 
 	public RopaDTO() {
 	}
 
 	public RopaDTO(int id, String code, String name, String description, String image, double price, String talla,
-			String quantity, InventoryStatus inventoryStatus) {
+			int quantity) {
 		this.id = id;
 		this.code = code;
 		this.name = name;
@@ -33,13 +36,12 @@ public class RopaDTO implements Serializable {
 		this.price = price;
 		this.talla = talla;
 		this.quantity = quantity;
-		this.inventoryStatus = inventoryStatus;
 	}
 
 	@Override
 	public RopaDTO clone() {
 		return new RopaDTO(getId(), getCode(), getName(), getDescription(), getImage(), getPrice(), getTalla(),
-				getQuantity(), getInventoryStatus());
+				getQuantity());
 	}
 
 	public int getId() {
@@ -98,20 +100,12 @@ public class RopaDTO implements Serializable {
 		this.talla = talla;
 	}
 
-	public String getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(String quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
-	}
-
-	public InventoryStatus getInventoryStatus() {
-		return inventoryStatus;
-	}
-
-	public void setInventoryStatus(InventoryStatus inventoryStatus) {
-		this.inventoryStatus = inventoryStatus;
 	}
 
 	public List<Order> getOrders() {

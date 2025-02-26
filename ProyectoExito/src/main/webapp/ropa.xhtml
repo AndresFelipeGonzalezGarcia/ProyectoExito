@@ -56,10 +56,6 @@
 			filterBy="#{ropa.name}">
 			<h:outputText value="#{ropa.name}" />
 		</p:column>
-		<p:column headerText="Imagen" exportable="false">
-			<p:graphicImage name="images/ropa/#{ropa.image}" library="demo"
-				styleClass="ropa-image" />
-		</p:column>
 		<p:column headerText="Precio" sortBy="#{ropa.price}">
 			<h:outputText value="#{ropa.price}" style="font-weight: 700">
 				<f:convertNumber currencySymbol="$" type="currency" />
@@ -69,11 +65,11 @@
 			filterBy="#{ropa.talla}">
 			<h:outputText value="#{ropa.talla}" />
 		</p:column>
-		<p:column headerText="Estado" sortBy="#{ropa.inventoryStatus}"
-			filterBy="#{ropa.inventoryStatus}">
+		<p:column headerText="Cantidad" sortBy="#{ropa.quantity}"
+			filterBy="#{ropa.quantity}">
 			<h:outputText
-				styleClass="ropa-badge status-#{ropa.inventoryStatus.name().toLowerCase()}"
-				value="#{ropa.inventoryStatus.text}" />
+				styleClass="ropa-badge status-#{ropa.quantity}"
+				value="#{ropa.quantity}" />
 		</p:column>
 		<p:column exportable="false" ariaHeaderText="Actions">
 			<p:commandButton icon="pi pi-pencil"
