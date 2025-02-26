@@ -1,4 +1,4 @@
-package co.edu.unbosque.model.persistance;
+package co.edu.unbosque.model;
 
 public class Order implements java.io.Serializable {
 

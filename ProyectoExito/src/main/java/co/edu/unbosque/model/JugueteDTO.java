@@ -4,9 +4,7 @@ package co.edu.unbosque.model;
 import java.io.Serializable;
 import java.util.List;
 
-import co.edu.unbosque.model.persistance.Order;
-
-public class Product implements Serializable {
+public class JugueteDTO implements Serializable {
 
     /**
 	 * 
@@ -23,10 +21,10 @@ public class Product implements Serializable {
     private InventoryStatus inventoryStatus;
     private List<Order> orders;
 
-    public Product() {
+    public JugueteDTO() {
     }
 
-    public Product(int id, String code, String name, String description, String image, double price, String category, int quantity,
+    public JugueteDTO(int id, String code, String name, String description, String image, double price, String category, int quantity,
             InventoryStatus inventoryStatus) {
         this.id = id;
         this.code = code;
@@ -40,8 +38,8 @@ public class Product implements Serializable {
     }
 
     @Override
-    public Product clone() {
-        return new Product(getId(), getCode(), getName(), getDescription(), getImage(), getPrice(), getCategory(), getQuantity(),
+    public JugueteDTO clone() {
+        return new JugueteDTO(getId(), getCode(), getName(), getDescription(), getImage(), getPrice(), getCategory(), getQuantity(),
                 getInventoryStatus());
     }
 
@@ -145,7 +143,7 @@ public class Product implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        Product other = (Product) obj;
+        JugueteDTO other = (JugueteDTO) obj;
         if (code == null) {
             return other.code == null;
         }
