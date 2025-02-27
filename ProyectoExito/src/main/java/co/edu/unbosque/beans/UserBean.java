@@ -63,35 +63,19 @@ public class UserBean implements Serializable {
 	}
 
 	public void saveProduct() {
-		if (this.selectedProduct.getCode() == null) {
-			this.selectedProduct.setCode(UUID.randomUUID().toString().replaceAll("-", "").substring(0, 9));
-			jDAO.getProducts().add(this.selectedProduct);
-			products.add(this.selectedProduct);
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Added"));
-		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Updated"));
-		}
-
-		PrimeFaces.current().executeScript("PF('manageProductDialog').hide()");
-		PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
+		jDAO.saveProduct(selectedProduct);
+		products.add(selectedProduct);
 	}
 
 	public void deleteProduct() {
+		jDAO.deleteProduct(selectedProduct);
 		products.remove(this.selectedProduct);
-		jDAO.getProducts().remove(this.selectedProduct);
 		this.selectedProducts.remove(this.selectedProduct);
-		this.selectedProduct = null;
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Removed"));
-		PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
 	}
 
 	public void deleteSelectedProducts() {
+		jDAO.deleteSelectedProducts(selectedProducts);
 		products.removeAll(this.selectedProducts);
-		jDAO.getProducts().removeAll(this.selectedProducts);
-		this.selectedProducts = null;
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Products Removed"));
-		PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
-		PrimeFaces.current().executeScript("PF('dtProducts').clearFilters()");
 	}
 
 	public void openNewAl() {
@@ -99,35 +83,19 @@ public class UserBean implements Serializable {
 	}
 
 	public void saveProductAl() {
-		if (this.selectedProduct1.getCode() == null) {
-			this.selectedProduct1.setCode(UUID.randomUUID().toString().replaceAll("-", "").substring(0, 9));
-			aDAO.getProducts1().add(this.selectedProduct1);
-			products1.add(this.selectedProduct1);
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Added"));
-		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Updated"));
-		}
-
-		PrimeFaces.current().executeScript("PF('manageProductDialog').hide()");
-		PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
+		aDAO.saveProduct(selectedProduct1);
+		products1.add(this.selectedProduct1);
 	}
 
 	public void deleteProductAl() {
+		aDAO.deleteProduct(selectedProduct1);
 		products1.remove(this.selectedProduct1);
-		aDAO.getProducts1().remove(this.selectedProduct1);
 		this.selectedProducts1.remove(this.selectedProduct1);
-		this.selectedProduct1 = null;
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Removed"));
-		PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
 	}
 
 	public void deleteSelectedProductsAl() {
+		aDAO.deleteSelectedProducts(selectedProducts1);
 		products1.removeAll(this.selectedProducts1);
-		aDAO.getProducts1().removeAll(this.selectedProducts1);
-		this.selectedProducts1 = null;
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Products Removed"));
-		PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
-		PrimeFaces.current().executeScript("PF('dtProducts').clearFilters()");
 	}
 
 	public void openNewR() {
@@ -135,49 +103,33 @@ public class UserBean implements Serializable {
 	}
 
 	public void saveProductR() {
-		if (this.selectedProduct2.getCode() == null) {
-			this.selectedProduct2.setCode(UUID.randomUUID().toString().replaceAll("-", "").substring(0, 9));
-			rDAO.getProducts().add(this.selectedProduct2);
-			products2.add(this.selectedProduct2);
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Added"));
-		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Updated"));
-		}
-
-		PrimeFaces.current().executeScript("PF('manageProductDialog').hide()");
-		PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
+		rDAO.saveProduct(selectedProduct2);
+		products2.add(this.selectedProduct2);
 	}
 
 	public void deleteProductR() {
+		rDAO.deleteProduct(selectedProduct2);
 		products2.remove(this.selectedProduct2);
-		rDAO.getProducts().remove(this.selectedProduct2);
 		this.selectedProducts2.remove(this.selectedProduct2);
-		this.selectedProduct2 = null;
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Removed"));
-		PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
 	}
 
 	public void deleteSelectedProductsR() {
+		rDAO.deleteSelectedProducts(selectedProducts2);
 		products2.removeAll(this.selectedProducts2);
-		rDAO.getProducts().removeAll(this.selectedProducts2);
-		this.selectedProducts2 = null;
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Products Removed"));
-		PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
-		PrimeFaces.current().executeScript("PF('dtProducts').clearFilters()");
 	}
 
-//	public String getDeleteButtonMessage() {
-//		if (hasSelectedProducts()) {
-//			int size = this.selectedProducts.size();
-//			return size > 1 ? size + " products selected" : "1 product selected";
-//		}
-//
-//		return "Delete";
-//	}
-//
-//	public boolean hasSelectedProducts() {
-//		return this.selectedProducts != null && !this.selectedProducts.isEmpty();
-//	}
+	public String getDeleteButtonMessage() {
+		if (hasSelectedProducts()) {
+			int size = this.selectedProducts.size();
+			return size > 1 ? size + " products selected" : "1 product selected";
+		}
+
+		return "Delete";
+	}
+
+	public boolean hasSelectedProducts() {
+		return this.selectedProducts != null && !this.selectedProducts.isEmpty();
+	}
 
 	public List<JugueteDTO> getProducts() {
 		return products;

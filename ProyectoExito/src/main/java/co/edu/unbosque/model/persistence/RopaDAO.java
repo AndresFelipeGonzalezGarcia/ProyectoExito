@@ -3,15 +3,21 @@ package co.edu.unbosque.model.persistence;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
+import org.primefaces.PrimeFaces;
+
+import co.edu.unbosque.model.JugueteDTO;
 import co.edu.unbosque.model.RopaDTO;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
 
 @Named
 @ApplicationScoped
-public class RopaDAO {
+public class RopaDAO implements CRUDOperation<RopaDTO> {
 
 	private List<RopaDTO> products;
 
@@ -62,5 +68,33 @@ public class RopaDAO {
 			return new ArrayList<>(products.subList(0, size));
 		}
 
+	}
+
+	public void saveProduct(RopaDTO a) {
+		if (a.getCode() == null) {
+			a.setCode(UUID.randomUUID().toString().replaceAll("-", "").substring(0, 9));
+			products.add(a);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Added"));
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Updated"));
+		}
+
+		PrimeFaces.current().executeScript("PF('manageProductDialog').hide()");
+		PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
+	}
+
+	public void deleteProduct(RopaDTO a) {
+		products.remove(a);
+		a = null;
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Removed"));
+		PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
+	}
+
+	public void deleteSelectedProducts(List<RopaDTO> a) {
+		products.removeAll(a);
+		a = null;
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Products Removed"));
+		PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
+		PrimeFaces.current().executeScript("PF('dtProducts').clearFilters()");
 	}
 }
