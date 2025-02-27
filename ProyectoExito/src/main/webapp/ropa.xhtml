@@ -35,8 +35,8 @@
 	<p:dataTable id="dt-products" widgetVar="dtProducts" var="ropa"
 		value="#{UserBean.products2}" reflow="true"
 		styleClass="products-table" selection="#{UserBean.selectedProducts2}"
-		rowKey="#{ropa.id}" paginator="true" rows="10" selectionRowMode="add"
-		paginatorPosition="bottom">
+		rowKey="#{ropa.code}" paginator="true" rows="10"
+		selectionRowMode="add" paginatorPosition="bottom">
 		<f:facet name="header">
 			<div class="products-table-header"> <span
 				style="font-weight: bold">Prendas</span> <span
@@ -67,8 +67,7 @@
 		</p:column>
 		<p:column headerText="Cantidad" sortBy="#{ropa.quantity}"
 			filterBy="#{ropa.quantity}">
-			<h:outputText
-				styleClass="ropa-badge status-#{ropa.quantity}"
+			<h:outputText styleClass="ropa-badge status-#{ropa.quantity}"
 				value="#{ropa.quantity}" />
 		</p:column>
 		<p:column exportable="false" ariaHeaderText="Actions">
@@ -95,10 +94,6 @@
 		widgetVar="manageProductDialog" responsive="true">
 		<p:outputPanel id="manage-ropa-content" class="ui-fluid">
 			<p:outputPanel rendered="#{not empty UserBean.selectedProduct2}">
-				<p:graphicImage
-					name="images/ropa/#{UserBean.selectedProduct2.image}"
-					library="demo" styleClass="ropa-image"
-					rendered="#{not empty UserBean.selectedProduct2.image}" />
 				<div class="field"> <p:outputLabel for="name">Nombre</p:outputLabel>
 				<p:inputText id="name" value="#{UserBean.selectedProduct2.name}"
 					required="true" /> </div>

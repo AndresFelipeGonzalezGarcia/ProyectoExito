@@ -35,7 +35,7 @@
 	<p:dataTable id="dt-products" widgetVar="dtProducts" var="alimento"
 		value="#{UserBean.products1}" reflow="true"
 		styleClass="products-table" selection="#{UserBean.selectedProducts1}"
-		rowKey="#{alimento.id}" paginator="true" rows="10"
+		rowKey="#{alimento.code}" paginator="true" rows="10"
 		selectionRowMode="add" paginatorPosition="bottom">
 		<f:facet name="header">
 			<div class="products-table-header"> <span
@@ -67,8 +67,7 @@
 		</p:column>
 		<p:column headerText="Cantidad" sortBy="#{alimento.quantity}"
 			filterBy="#{alimento.quantity}">
-			<h:outputText
-				styleClass="alimento-badge status-#{alimento.quantity}"
+			<h:outputText styleClass="alimento-badge status-#{alimento.quantity}"
 				value="#{alimento.quantity}" />
 		</p:column>
 		<p:column exportable="false" ariaHeaderText="Actions">
@@ -87,7 +86,7 @@
 				<f:setPropertyActionListener value="#{alimento}"
 					target="#{UserBean.selectedProduct1}" />
 			</p:commandButton>
-		</p:column> 
+		</p:column>
 
 	</p:dataTable>
 </h:form> <h:form id="dialogs">
@@ -95,10 +94,6 @@
 		widgetVar="manageProductDialog" responsive="true">
 		<p:outputPanel id="manage-alimento-content" class="ui-fluid">
 			<p:outputPanel rendered="#{not empty UserBean.selectedProduct1}">
-				<p:graphicImage
-					name="images/alimento/#{UserBean.selectedProduct1.image}"
-					library="demo" styleClass="product-image"
-					rendered="#{not empty UserBean.selectedProduct1.image}" />
 				<div class="field"> <p:outputLabel for="name">Nombre</p:outputLabel>
 				<p:inputText id="name" value="#{UserBean.selectedProduct1.name}"
 					required="true" /> </div>

@@ -46,7 +46,7 @@
 			<p:dataTable id="dt-products" widgetVar="dtProducts" var="juguete"
 				value="#{UserBean.products}" reflow="true"
 				styleClass="products-table" selection="#{UserBean.selectedProducts}"
-				rowKey="#{juguete.id}" paginator="true" rows="10"
+				rowKey="#{juguete.code}" paginator="true" rows="10"
 				selectionRowMode="add" paginatorPosition="bottom">
 				<f:facet name="header">
 					<div class="products-table-header">
@@ -110,10 +110,6 @@
 				modal="true" widgetVar="manageProductDialog" responsive="true">
 				<p:outputPanel id="manage-juguete-content" class="ui-fluid">
 					<p:outputPanel rendered="#{not empty UserBean.selectedProduct}">
-						<p:graphicImage
-							name="images/juguete/#{UserBean.selectedProduct.image}"
-							library="demo" styleClass="juguete-image"
-							rendered="#{not empty UserBean.selectedProduct.image}" />
 						<div class="field">
 							<p:outputLabel for="name">Nombre</p:outputLabel>
 							<p:inputText id="name" value="#{UserBean.selectedProduct.name}"

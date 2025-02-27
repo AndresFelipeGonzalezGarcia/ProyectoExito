@@ -17,12 +17,23 @@ public class AlimentoDAO {
 	@PostConstruct
 	public void init() {
 		products1 = new ArrayList<>();
-		products1.add(new AlimentoDTO(1000, "f230fh0g3", "Pata de Cerdo", "Carne de cerdo de alta calidad", "Cerdo.jpg",
-				35000, "Carnes", 24));
-		products1.add(new AlimentoDTO(1001, "f230fh0g3", "Pata de Cerdo", "Carne de cerdo de alta calidad", "Cerdo.jpg", 72,
-				"Carnes", 61));
-		products1.add(new AlimentoDTO(1002, "zz21cz3c1", "Leche", "deslactosada", "vaca.jpg", 79, "Lacteos", 2));
-		products1.add(new AlimentoDTO(1003, "244wgerg2", "Leche", "deslactosada", "vaca.jpg", 29, "Lacteos", 25));
+		products1.add(new AlimentoDTO("f230fh0g3", "tilapia", "pescado de buena calidad", 9950, "Carnes", 24));
+		products1.add(
+				new AlimentoDTO("793e5e2af", "Lomo de Cerdo", "Carne de cerdo de alta calidad", 39200, "Carnes", 61));
+		products1.add(new AlimentoDTO("zz21cz3c1", "Leche", "alqueria deslactosada", 15780, "Lacteos", 2));
+		products1.add(new AlimentoDTO("ff24196d2", "Bon Yurt", "deslactosada", 9480, "Lacteos", 200));
+		products1.add(new AlimentoDTO("fgh123abc", "Pechuga de Pollo",
+				"Pechuga de pollo fresca, ideal para cocinar a la plancha", 22000, "Carnes", 50));
+		products1.add(new AlimentoDTO("xyz987mno", "Chuletas de Cerdo",
+				"Chuletas de cerdo frescas, perfectas para parrillada", 35000, "Carnes", 40));
+		products1.add(new AlimentoDTO("abc456def", "Carne Molida de Res",
+				"Carne molida de res 100% fresca, ideal para hamburguesas", 28000, "Carnes", 60));
+		products1.add(new AlimentoDTO("qwert1234z", "Leche Entera", "Leche fresca de vaca, perfecta para el desayuno",
+				4500, "Lácteos", 100));
+		products1.add(new AlimentoDTO("zxy890wvu", "Queso Fresco",
+				"Queso fresco cremoso, ideal para sandwiches y ensaladas", 18000, "Lácteos", 80));
+		products1.add(new AlimentoDTO("jkl345mno", "Yogur Natural",
+				"Yogur natural sin azúcar, ideal para una dieta balanceada", 6000, "Lácteos", 75));
 	}
 
 	public List<AlimentoDTO> getProducts1() {

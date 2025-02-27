@@ -3,21 +3,15 @@ package co.edu.unbosque.model;
 import java.io.Serializable;
 import java.util.List;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Named;
-
-
 public class RopaDTO implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int id;
 	private String code;
 	private String name;
 	private String description;
-	private String image;
 	private double price;
 	private String talla;
 	private int quantity;
@@ -26,13 +20,10 @@ public class RopaDTO implements Serializable {
 	public RopaDTO() {
 	}
 
-	public RopaDTO(int id, String code, String name, String description, String image, double price, String talla,
-			int quantity) {
-		this.id = id;
+	public RopaDTO(String code, String name, String description, double price, String talla, int quantity) {
 		this.code = code;
 		this.name = name;
 		this.description = description;
-		this.image = image;
 		this.price = price;
 		this.talla = talla;
 		this.quantity = quantity;
@@ -40,16 +31,7 @@ public class RopaDTO implements Serializable {
 
 	@Override
 	public RopaDTO clone() {
-		return new RopaDTO(getId(), getCode(), getName(), getDescription(), getImage(), getPrice(), getTalla(),
-				getQuantity());
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
+		return new RopaDTO(getCode(), getName(), getDescription(), getPrice(), getTalla(), getQuantity());
 	}
 
 	public String getCode() {
@@ -74,14 +56,6 @@ public class RopaDTO implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
 	}
 
 	public double getPrice() {

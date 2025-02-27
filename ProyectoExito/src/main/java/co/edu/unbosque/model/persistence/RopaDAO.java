@@ -13,24 +13,32 @@ import jakarta.inject.Named;
 @ApplicationScoped
 public class RopaDAO {
 
-
-
 	private List<RopaDTO> products;
 
-	@PostConstruct 
+	@PostConstruct
 	public void init() {
 		products = new ArrayList<>();
-		products.add(new RopaDTO(1000, "f230fh0g3", "Camiseta Polo", "camiseta con cuello color verde", "Polo.jpg",
-				35000, "XL", 1002));
-		products.add(new RopaDTO(1000, "f230fh0g3", "Camiseta Polo", "camiseta con cuello color verde", "Polo.jpg",
-				35000, "XL", 45));
-		products.add(new RopaDTO(1002, "zz21cz3c1", "vestido Zara", "vestido de una pieza color rojo", "vestido.jpg",
-				79, "S", 456));
-		products.add(new RopaDTO(1002, "zz21cz3c1", "vestido Zara", "vestido de una pieza color rojo", "vestido.jpg",
-				79, "S", 562));
+		products.add(new RopaDTO("fgh123abc", "Camiseta Básica", "Camiseta de algodón, ideal para el día a día", 35000,
+				"M", 45));
+		products.add(
+				new RopaDTO("xyt987jkl", "Jean Slim Fit", "Jean de corte ajustado, cómodo y moderno", 90000, "L", 30));
+		products.add(new RopaDTO("abc456def", "Chaqueta de Cuero", "Chaqueta de cuero sintético para invierno", 180000,
+				"XL", 20));
+		products.add(new RopaDTO("qwert1234z", "Sudadera con Capucha", "Sudadera suave y cálida con capucha", 75000,
+				"S", 25));
+		products.add(
+				new RopaDTO("zxy890wvu", "Pantalón Deportivo", "Pantalón cómodo para hacer deporte", 50000, "M", 35));
+		products.add(
+				new RopaDTO("jkl345mno", "Blusa Elegante", "Blusa de seda para ocasiones especiales", 95000, "S", 15));
+		products.add(new RopaDTO("lmn678opq", "Vestido de Verano", "Vestido ligero y fresco, ideal para el calor",
+				120000, "L", 40));
+		products.add(new RopaDTO("abc123xyz", "Camisa de Manga Larga",
+				"Camisa de manga larga de algodón, ideal para oficina", 85000, "M", 28));
+		products.add(new RopaDTO("opq456rst", "Pantalón Cargo", "Pantalón cómodo y práctico con múltiples bolsillos",
+				110000, "L", 18));
+		products.add(new RopaDTO("uvw789ghi", "Falda Midi", "Falda midi de tela fluida, perfecta para el verano", 65000,
+				"S", 22));
 	}
-
-
 
 	public List<RopaDTO> getProducts() {
 		return new ArrayList<>(products);
